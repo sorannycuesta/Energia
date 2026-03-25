@@ -1,0 +1,366 @@
+/* ══════════════════════════════════════════
+   EnergiAVerde — styles.css
+   Transición Energética Justa · MinTIC 2025
+══════════════════════════════════════════ */
+
+/* ─── VARIABLES DE COLOR ──────────────────── */
+:root {
+  --bg:         #080d08;
+  --surface:    #0f180f;
+  --surface2:   #162016;
+  --surface3:   #1e2e1e;
+  --green:      #4ade80;
+  --green-dim:  #22c55e;
+  --green-dark: #166534;
+  --amber:      #fbbf24;
+  --teal:       #2dd4bf;
+  --sky:        #38bdf8;
+  --red:        #f87171;
+  --muted:      #657065;
+  --text:       #e4ede4;
+  --text-dim:   #96a896;
+  --border:     #1e2e1e;
+  --border2:    #253525;
+  --radius:     14px;
+  --radius-sm:  8px;
+  --shadow:     0 4px 24px rgba(0,0,0,0.4);
+}
+
+/* ─── RESET & BASE ────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+a { color: var(--green); text-decoration: none; }
+a:hover { text-decoration: underline; }
+img { max-width: 100%; display: block; }
+strong { color: var(--text); }
+
+/* ─── SCROLLBAR ───────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+
+/* ─── TIPOGRAFÍA ──────────────────────────── */
+h1, h2, h3, h4, h5 {
+  font-family: 'Syne', sans-serif;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+h1 { font-size: clamp(2.4rem, 6vw, 4.2rem); font-weight: 800; }
+h2 { font-size: clamp(1.7rem, 4vw, 2.6rem); font-weight: 800; }
+h3 { font-size: 1.2rem; font-weight: 700; }
+p  { color: var(--text-dim); margin-bottom: 1rem; }
+
+/* ─── LAYOUT ──────────────────────────────── */
+.container { max-width: 1140px; margin: 0 auto; padding: 0 1.5rem; }
+section    { padding: 5rem 1.5rem; }
+.divider   { border: none; border-top: 1px solid var(--border); }
+
+/* ─── ACENTOS DE COLOR ────────────────────── */
+.accent-green { color: var(--green); }
+.accent-amber { color: var(--amber); }
+.accent-teal  { color: var(--teal);  }
+
+/* ─── BOTONES ─────────────────────────────── */
+.btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.7rem 1.6rem; border-radius: 999px;
+  font-family: 'DM Sans', sans-serif; font-weight: 500;
+  font-size: 0.9rem; cursor: pointer;
+  transition: all 0.2s ease; border: none; white-space: nowrap;
+  text-decoration: none;
+}
+.btn-primary { background: var(--green); color: #080d08; }
+.btn-primary:hover { background: #6ee89a; transform: translateY(-1px); box-shadow: 0 4px 20px rgba(74,222,128,0.3); text-decoration: none; }
+.btn-outline { background: transparent; color: var(--text-dim); border: 1px solid var(--border2); }
+.btn-outline:hover { border-color: var(--green); color: var(--green); text-decoration: none; }
+.btn-sm { padding: 0.4rem 1rem; font-size: 0.8rem; }
+
+/* ─── CHIPS / ETIQUETAS ───────────────────── */
+.chip {
+  display: inline-block; font-size: 0.75rem; padding: 0.25rem 0.7rem;
+  border-radius: 999px; background: var(--surface3); color: var(--text-dim);
+  border: 1px solid var(--border2); margin: 0.2rem;
+}
+.chip.amber { background: rgba(251,191,36,0.1);  color: var(--amber); border-color: rgba(251,191,36,0.3); }
+.chip.teal  { background: rgba(45,212,191,0.1);  color: var(--teal);  border-color: rgba(45,212,191,0.3); }
+.chip.sky   { background: rgba(56,189,248,0.1);  color: var(--sky);   border-color: rgba(56,189,248,0.3); }
+
+/* ─── SECTION TAG ─────────────────────────── */
+.section-tag {
+  display: inline-block; font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--green); background: rgba(74,222,128,0.08);
+  border: 1px solid rgba(74,222,128,0.2); border-radius: 999px;
+  padding: 0.25rem 0.8rem; margin-bottom: 1rem;
+}
+
+/* ══════════════════════════════════════════
+   NAVBAR
+══════════════════════════════════════════ */
+#navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2rem; height: 60px;
+  background: rgba(8,13,8,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.2rem; color: var(--text); }
+.nav-logo span { color: var(--green); }
+.nav-links { display: flex; gap: 1.5rem; }
+.nav-links a { color: var(--text-dim); font-size: 0.875rem; transition: color 0.2s; }
+.nav-links a:hover,
+.nav-links a.active { color: var(--green); text-decoration: none; }
+.nav-hamburger { display: none; background: none; border: none; color: var(--text); font-size: 1.4rem; cursor: pointer; padding: 0.25rem; }
+
+@media (max-width: 700px) {
+  .nav-hamburger { display: block; }
+  .nav-links {
+    display: none; flex-direction: column; gap: 0.5rem;
+    position: absolute; top: 60px; left: 0; right: 0;
+    background: var(--surface); padding: 1rem 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-links.open { display: flex; }
+}
+
+/* ══════════════════════════════════════════
+   HERO / PORTADA
+══════════════════════════════════════════ */
+#portada {
+  min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  padding-top: 80px; text-align: center;
+  position: relative; overflow: hidden;
+}
+
+/* Fondo con grid de puntos */
+.hero-bg-grid {
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(74,222,128,0.08) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+}
+
+/* Glow central */
+.hero-bg-glow {
+  position: absolute; top: 20%; left: 50%; transform: translateX(-50%);
+  width: 600px; height: 400px;
+  background: radial-gradient(ellipse, rgba(74,222,128,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative; z-index: 1;
+  max-width: 780px; margin: 0 auto; padding: 0 1.5rem;
+}
+
+.hero-badge {
+  display: inline-block; font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--green); border: 1px solid rgba(74,222,128,0.3);
+  background: rgba(74,222,128,0.06); border-radius: 999px;
+  padding: 0.3rem 1rem; margin-bottom: 1.5rem;
+}
+
+.hero-sub {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: var(--text-dim); max-width: 580px;
+  margin: 1.5rem auto 2rem;
+}
+
+.hero-cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 3rem; }
+
+.hero-stats {
+  display: flex; gap: 2.5rem; justify-content: center;
+  flex-wrap: wrap; padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+.hero-stat { display: flex; flex-direction: column; align-items: center; gap: 0.25rem; }
+.hero-stat .val {
+  font-family: 'Syne', sans-serif; font-size: 1.8rem; font-weight: 800;
+  color: var(--green);
+}
+.hero-stat .lbl { font-size: 0.78rem; color: var(--muted); }
+
+/* ══════════════════════════════════════════
+   INTRODUCCIÓN
+══════════════════════════════════════════ */
+#introduccion h2 { margin-bottom: 2rem; }
+
+.intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem; align-items: start;
+}
+
+@media (max-width: 768px) { .intro-grid { grid-template-columns: 1fr; } }
+
+.intro-text p:last-of-type { margin-bottom: 0; }
+
+.intro-pillars { display: flex; flex-direction: column; gap: 1.25rem; }
+.pillar {
+  display: flex; gap: 1rem; align-items: flex-start;
+  background: var(--surface); border: 1px solid var(--border2);
+  border-radius: var(--radius); padding: 1.25rem;
+  transition: border-color 0.2s;
+}
+.pillar:hover { border-color: var(--green-dark); }
+.pillar-icon { font-size: 1.5rem; flex-shrink: 0; }
+.pillar h3 { font-size: 1rem; color: var(--text); margin-bottom: 0.25rem; }
+.pillar p  { font-size: 0.875rem; margin: 0; }
+
+/* ══════════════════════════════════════════
+   SECCIÓN ENERGÍA SOLAR (Nivel 1)
+══════════════════════════════════════════ */
+#energia h2 { margin-bottom: 0.5rem; }
+.section-intro { color: var(--text-dim); max-width: 600px; margin-bottom: 2.5rem; }
+
+/* Grid explicación */
+.energy-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 3rem; align-items: center;
+  margin-bottom: 3rem;
+}
+@media (max-width: 768px) { .energy-hero-grid { grid-template-columns: 1fr; } }
+
+/* ─── Visual animado del sol + paneles ── */
+.solar-visual {
+  position: relative; width: 100%; aspect-ratio: 1/1;
+  max-width: 280px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.sv-sun {
+  width: 90px; height: 90px;
+  background: radial-gradient(circle, #fde68a, var(--amber));
+  border-radius: 50%;
+  box-shadow: 0 0 40px rgba(251,191,36,0.5);
+  animation: pulse-sun 3s ease-in-out infinite;
+  z-index: 2;
+}
+
+.sv-rays {
+  position: absolute; inset: 0;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg, rgba(251,191,36,0.12) 10deg, transparent 20deg,
+    transparent 30deg, rgba(251,191,36,0.12) 40deg, transparent 50deg,
+    transparent 60deg, rgba(251,191,36,0.12) 70deg, transparent 80deg,
+    transparent 90deg, rgba(251,191,36,0.12) 100deg, transparent 110deg,
+    transparent 120deg, rgba(251,191,36,0.12) 130deg, transparent 140deg,
+    transparent 150deg, rgba(251,191,36,0.12) 160deg, transparent 170deg,
+    transparent 180deg, rgba(251,191,36,0.12) 190deg, transparent 200deg,
+    transparent 210deg, rgba(251,191,36,0.12) 220deg, transparent 230deg,
+    transparent 240deg, rgba(251,191,36,0.12) 250deg, transparent 260deg,
+    transparent 270deg, rgba(251,191,36,0.12) 280deg, transparent 290deg,
+    transparent 300deg, rgba(251,191,36,0.12) 310deg, transparent 320deg,
+    transparent 330deg, rgba(251,191,36,0.12) 340deg, transparent 350deg
+  );
+  border-radius: 50%;
+  animation: spin-slow 20s linear infinite;
+}
+
+.sv-panels {
+  position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%);
+  display: flex; gap: 6px;
+}
+.sv-panel {
+  width: 38px; height: 28px;
+  background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 50%, #1d4ed8 100%);
+  border: 1px solid rgba(96,165,250,0.4);
+  border-radius: 3px;
+  position: relative;
+  animation: panel-glow 2.5s ease-in-out infinite alternate;
+}
+.sv-panel::after {
+  content: '';
+  position: absolute; inset: 3px;
+  border: 1px solid rgba(96,165,250,0.3);
+  border-radius: 1px;
+}
+.sv-panel:nth-child(2) { animation-delay: 0.5s; }
+.sv-panel:nth-child(3) { animation-delay: 1s; }
+.sv-panel:nth-child(4) { animation-delay: 1.5s; }
+
+@keyframes pulse-sun  { 0%,100%{ box-shadow: 0 0 40px rgba(251,191,36,0.5); } 50%{ box-shadow: 0 0 70px rgba(251,191,36,0.8); } }
+@keyframes spin-slow  { from{ transform: rotate(0deg); } to{ transform: rotate(360deg); } }
+@keyframes panel-glow { from{ box-shadow: 0 0 6px rgba(96,165,250,0.3); } to{ box-shadow: 0 0 18px rgba(96,165,250,0.7); } }
+
+/* ─── Tarjetas de datos ── */
+.facts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem; margin-bottom: 2.5rem;
+}
+.fact-card {
+  background: var(--surface); border: 1px solid var(--border2);
+  border-radius: var(--radius); padding: 1.5rem;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.fact-card:hover { border-color: var(--green-dark); transform: translateY(-2px); }
+.fact-icon { font-size: 1.8rem; margin-bottom: 0.75rem; }
+.fact-card h3 { font-size: 1rem; color: var(--text); margin-bottom: 0.5rem; }
+
+/* ─── Selector de 5 fuentes ── */
+.types-grid { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1rem; }
+.type-btn {
+  background: var(--surface); border: 1px solid var(--border2);
+  border-radius: var(--radius); padding: 0.8rem 1.1rem;
+  cursor: pointer; color: var(--text-dim); text-align: center;
+  transition: all 0.2s; min-width: 108px;
+}
+.type-btn .emoji { font-size: 1.5rem; display: block; margin-bottom: 0.3rem; }
+.type-btn .name  { font-size: 0.8rem; font-family: 'DM Sans', sans-serif; }
+.type-btn:hover,
+.type-btn.active {
+  border-color: var(--green); color: var(--text);
+  background: var(--surface2);
+  box-shadow: 0 0 0 1px var(--green-dark);
+}
+
+.type-detail {
+  background: var(--surface); border: 1px solid var(--green-dark);
+  border-radius: var(--radius); padding: 1.5rem;
+  animation: fadeIn 0.3s ease;
+}
+.type-detail h3 { color: var(--text); }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ══════════════════════════════════════════
+   UTILIDADES COMPARTIDAS
+   (los compañeros las usan también)
+══════════════════════════════════════════ */
+.notice {
+  background: var(--surface2); border: 1px solid var(--border2);
+  border-radius: var(--radius-sm); padding: 1rem 1.25rem;
+  color: var(--text-dim); font-size: 0.875rem; margin-bottom: 1.5rem;
+}
+.form-group { margin-bottom: 1.25rem; }
+.form-group label { display: block; font-size: 0.8rem; color: var(--muted); margin-bottom: 0.4rem; }
+.form-group input,
+.form-group select,
+.fgroup input,
+.fgroup select {
+  background: var(--surface); border: 1px solid var(--border2);
+  color: var(--text); border-radius: var(--radius-sm);
+  padding: 0.6rem 0.9rem; font-size: 0.875rem;
+  font-family: 'DM Sans', sans-serif;
+}
+.fgroup { display: flex; flex-direction: column; gap: 0.3rem; }
+.fgroup label { font-size: 0.75rem; color: var(--muted); }
