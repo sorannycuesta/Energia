@@ -1,0 +1,19 @@
+<section id="calculadora">
+    <h2>Calculadora de Huella Energética</h2>
+    <div class="calc-container">
+        <label>Tu consumo mensual (kWh):</label>
+        <input type="number" id="inputConsumo" placeholder="Ej: 150">
+        
+        <label>Año de referencia:</label>
+        <select id="selectAnio">
+            <option value="2022">2022 (Más reciente)</option>
+            <option value="2020">2020</option>
+            <option value="2015">2015</option>
+            <option value="2010">2010</option>
+        </select>
+        
+        <button id="btnCalcular" class="btn-primary">Calcular Impacto</button>
+    </div>
+    
+    <div id="calcResult"></div>
+</section>
